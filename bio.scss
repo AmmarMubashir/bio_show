@@ -1,0 +1,733 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+// Define breakpoints
+$tablet: 48rem; // 768px
+$desktop: 80rem; // 1280px
+
+$color-background: #323232;
+$color-mercury: #e5e5e5;
+$color-white: #ffffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.navbar {
+  width: 100%;
+  padding: 20px 20px 20px 100px;
+  background-color: $color-background;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 69px;
+
+  &__logo {
+    a {
+      // display: flex;
+      display: block;
+      // margin-bottoms: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__links {
+    display: flex;
+    // justify-content: center;
+    // width: 100%;
+
+    .navbar__link {
+      color: $color-mercury;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+      font-family: "Avenir Next", sans-serif;
+      font-weight: 400;
+      color: $color-mercury;
+
+      &:hover,
+      &.navbar__link--active {
+        color: $color-white;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 2px;
+        width: 100%;
+        background-color: $color-white;
+        opacity: 0;
+        transition: opacity 0.3s, width 0.3s;
+      }
+
+      &:hover::after,
+      &.navbar__link--active::after {
+        opacity: 1;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.hero {
+  background: url(./assets/images/hero-bio.jpg);
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    height: 100%; /* Change height to match .hero height */
+    width: 100%; /* Add width property */
+    position: absolute;
+    top: 0; /* Adjust top position */
+    left: 0;
+    backdrop-filter: brightness(40%);
+    z-index: 1;
+  }
+
+  h1 {
+    color: white;
+    width: 80%;
+    margin: auto;
+    font-size: 3rem;
+    position: relative; /* Ensure the h1 stays above the pseudo-element */
+    z-index: 2; /* Ensure the h1 stays above the pseudo-element */
+  }
+}
+
+.about {
+  padding: 20px;
+  width: 80%;
+  margin: auto;
+
+  .header_inner {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+  }
+
+  &__header {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    font-family: "Avenir Next", sans-serif;
+    padding-bottom: 0px;
+    padding-top: 8px;
+    color: #323232;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  &__subheader {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    font-family: "Avenir Next", sans-serif;
+    padding-bottom: 16px;
+    color: #323232;
+  }
+
+  &__quote {
+    font-size: 14px;
+
+    font-weight: 600;
+    font-family: "Avenir Next", sans-serif;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    color: #323232;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3rem;
+
+    .about__quote-author {
+      font-size: 0.8rem;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  &__subheader {
+    font-size: 1.3rem;
+  }
+  .about-text1 {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__text {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: "Avenir Next", sans-serif;
+    color: #323232;
+  }
+}
+
+.photo-gallery {
+  background-color: #fafafa;
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+
+  &__header {
+    color: #000;
+
+    font-family: "Avenir Next";
+    font-weight: bold;
+    padding-bottom: 1rem;
+    color: #323232;
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 20px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: $tablet) {
+    &__images {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: $desktop) {
+    &__images {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+}
+
+$color-mercury: #e1e1e1;
+$color-primary-black: #323232;
+
+.comments-section {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  //   background: red;
+
+  .comments-form {
+    // background: #000;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    // background: red;
+    gap: 20px;
+
+    .user-avatar-container {
+      img {
+        height: 50px;
+        width: 50px;
+
+        border-radius: 50%;
+      }
+    }
+    .comment-form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+
+      .name-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-end;
+        width: 100%;
+
+        .name-field-container {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          label {
+            color: rgba(0, 0, 0, 0.7);
+          }
+          input {
+            height: 20px;
+            padding: 15px;
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+
+      .comment-field-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        label {
+          color: rgba(0, 0, 0, 0.7);
+        }
+        textarea {
+          // height: 20px;
+          width: 100%;
+          padding: 15px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          resize: none;
+        }
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          padding: 10px 25px;
+          background: #0e0606;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  #comments-container {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .comment {
+      display: flex;
+      gap: 10px;
+
+      .avatar-container {
+        .avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          background: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .comment-content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+
+        .name-date-container {
+          display: flex;
+          justify-content: space-between;
+
+          span {
+            color: rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+}
+// .comments-section {
+//   padding: 20px;
+//   width: 80%;
+//   margin: auto;
+//   box-sizing: border-box;
+//   background-color: #000;
+
+//   .comment-field-container {
+//     margin-top: 20px;
+//   }
+
+//   .header-container {
+//     margin-bottom: 20px;
+//     padding-left: 0px;
+//     color: #323232;
+//     text-align: left;
+//     font-family: "Avenir Next";
+//   }
+
+//   .form-fields-container {
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+//     padding-left: 60px;
+//     flex-wrap: wrap;
+
+//     .user-avatar-container {
+//       position: absolute;
+//       top: 0;
+//       left: 0px;
+//       transform: translateY(70%);
+//       flex: 0 0 auto;
+//       margin-right: 10px;
+//       width: 36px;
+//       height: 36px;
+//       border-radius: 50%;
+//       background-color: #e1e1e1;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       overflow: hidden;
+
+//       img {
+//         width: 100%;
+//         height: 100%;
+//         border-radius: 50%;
+//         object-fit: cover;
+//       }
+
+//       @media (min-width: 768px) {
+//         width: 48px;
+//         height: 48px;
+//       }
+//     }
+
+//     .fields-container {
+//       flex: 1;
+
+//       .name-field-container input,
+//       .comment-field-container textarea {
+//         background-color: #fafafa;
+//       }
+
+//       .name-field-container input::placeholder,
+//       .comment-field-container textarea::placeholder {
+//         color: #000000;
+//         font-family: "Avenir Next", sans-serif;
+//         opacity: 1;
+//       }
+
+//       .name-field-container,
+//       .comment-field-container {
+//         margin-bottom: 10px;
+
+//         label {
+//           display: block;
+//           margin-bottom: 4px;
+//           font-family: "Avenir Next";
+//           font-weight: 700;
+//           color: #e1e1e1;
+//         }
+
+//         input[type="text"],
+//         textarea {
+//           width: 100%;
+//           padding: 12px;
+//           font-family: "Avenir Next";
+//           min-height: 36px;
+//           font-size: 14px;
+//           border: 1px solid #e1e1e1;
+//           border-radius: 4px;
+//           box-sizing: border-box; // This includes padding and border in the width
+
+//           &:focus {
+//             border-color: #323232;
+//             outline: none;
+//           }
+//         }
+
+//         textarea {
+//           height: 100px;
+//           resize: vertical;
+//         }
+//       }
+//     }
+//   }
+
+//   .button-container {
+//     color: #ffffff;
+//     text-align: center;
+//     margin-top: 10px;
+
+//     button {
+//       background-color: #323232;
+//       padding: 10px 20px;
+//       display: block;
+//       width: 84%;
+//       margin-left: 60px;
+//       font-size: 16px;
+//       font-family: "Avenir Next";
+//       font-weight: 400;
+//       color: #fff;
+//       background-color: #323232;
+//       border: none;
+//       border-radius: 4px;
+//       cursor: pointer;
+//     }
+//   }
+// }
+
+.footer {
+  background-color: #323232;
+  color: #ffffff;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__content {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    .footer1-div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .footer__heading {
+        font-size: 2rem;
+      }
+    }
+
+    .footer__socials {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .footer-icon {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+          height: 2rem;
+          width: 2rem;
+        }
+      }
+    }
+
+    .footer__agents {
+      display: flex;
+      //   flex-direction: column;
+      gap: 20px;
+      //   justify-content: flex-end;
+      .footer__agent_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 20px;
+      }
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  p {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    height: 400px;
+  }
+  .comments-section {
+    width: 90%;
+    .comments-form {
+      width: 100%;
+    }
+    #comments-container {
+      width: 90%;
+    }
+  }
+  .footer__content {
+    width: 90%;
+    .footer__agents {
+      flex-direction: column;
+    }
+    .footer__copyright {
+      order: -1;
+      padding-left: 100px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    padding: 20px;
+    height: 115px;
+
+    .navbar__links {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .hero {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+    button {
+      flex: 1;
+    }
+  }
+  .footer__content {
+    flex-direction: column;
+    gap: 20px;
+
+    .footer__socials {
+      width: 200px;
+    }
+
+    .footer__copyright {
+      order: 0;
+      padding-left: 0;
+    }
+  }
+
+  .about__quote {
+    width: 100%;
+  }
+  .about-text1 {
+    flex-direction: column;
+  }
+
+  .about {
+    width: 98%;
+
+    .header_inner {
+      width: 100%;
+    }
+  }
+
+  .photo-gallery {
+    width: 98%;
+  }
+
+  .comments-section {
+    width: 98%;
+
+    .comments-form {
+      width: 100%;
+    }
+  }
+}
+
+// .comments-section {
+//   background-color: #ffffff;
+//   padding: 20px;
+//   width: 100%;
+//   box-sizing: border-box;
+//   font-family: "Avenir Next", sans-serif;
+
+//   .comment {
+//     display: flex;
+//     flex-direction: column;
+//     border-bottom: 1px solid #e1e1e1;
+//     padding: 20px 0;
+
+//     .avatar-container {
+//       width: 36px; // adjust as needed
+//       height: 36px; // adjust as needed
+//       border-radius: 50%;
+//       background-color: #e1e1e1; // a placeholder for the avatar background color
+//       overflow: hidden;
+//       align-self: flex-start;
+
+//       img {
+//         width: 100%;
+//         height: auto;
+//       }
+//     }
+
+//     .name-date-container {
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between; // Adjust this as necessary to match your design
+//       margin-top: 10px;
+
+//       h3 {
+//         font-size: 1em; // Adjust as needed
+//         color: #323232;
+//         margin-right: 10px;
+//         flex: 1; // Allow the name to take up as much space as it can
+//       }
+
+//       span {
+//         font-size: 0.8em; // Adjust as needed
+//         color: #767676;
+//         flex-shrink: 0; // Prevent the date from shrinking
+//       }
+//     }
+
+//     .comment-content {
+//       margin-top: 10px;
+//       color: #323232;
+//     }
+//   }
+
+//   // ... other styles remain unchanged
+
+//   @media (min-width: 768px) {
+//     // responsive adjustments if needed
+//     .comment {
+//       flex-direction: row;
+
+//       //   .avatar-container {
+//       //     // Set fixed dimensions for avatar container
+//       //   }
+
+//       .name-date-container {
+//         flex-direction: row;
+//         align-items: center;
+//         justify-content: flex-start;
+//         margin-left: 20px;
+
+//         h3,
+//         span {
+//           margin-top: 0;
+//         }
+//       }
+
+//       .comment-content {
+//         clear: both;
+//         padding-top: 10px;
+//       }
+//     }
+//   }
+// }
